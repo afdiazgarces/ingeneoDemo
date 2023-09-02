@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1">
+    <title>Producto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <form action="#" th:action="@{/addProducto}" th:object="${producto}" method="post">
+      <input type="hidden" th:field="*{id}" class="form-control">
+
+
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Nombre</label>
+        <input type="text" th:field="*{nombre}" class="form-control" required>
+        <p th:if="${#fields.hasErrors('nombre')}" class="form-control" th:errors="*{nombre}" />
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Precio</label>
+        <input type="number" class="form-control" th:field="*{precio}" require>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Existencias</label>
+        <input type="number" class="form-control" th:field="*{existencias}" require>
+      </div>
+      <button type="submit" class="btn btn-primary">OK</button>
+      <a class="btn btn-warning" href="../mostrarProductos" role="button">Volver</a>
+    </form>
+  </body>
+</html>

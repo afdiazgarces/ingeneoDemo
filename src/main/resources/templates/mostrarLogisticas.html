@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Logisticas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h2>LISTA DE LOGISTICAS</h2>
+    <br>
+    <table class="table" th:object="${dto}">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">
+            <a class="btn btn-primary" th:href="crearLogistica">Crear Logistica</a>
+          </th>
+          <th scope="col">
+            <a class="btn btn-info" href="mostrarLogisticas" role="button">Limpiar</a>
+          </th>
+        </tr>
+        <tr>
+          <th scope="col">
+            <a class="btn btn-warning" href="../index.html">Inicio</a>
+          </th>
+          <th scope="col">
+            <form action="#" th:action="@{/searchLogistica}" th:object="${dto}" method="post">
+              <label for="exampleFormControlInput1">Buscar por</label>
+              <select th:field="*{option}">
+                <option th:value="'Cedula'" th:text="Cedula"></option>
+                <option th:value="'Guia'" th:text="Guia"></option>
+                <option th:value="'Flota'" th:text="Flota"></option>
+              </select>
+              <input type="text" class="form-control" th:field="*{value}">
+              <button type="submit" class="btn btn-success">Buscar</button>
+            </form>
+          </th>
+        </tr>
+      </thead>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Bodega</th>
+          <th scope="col">Cantidad producto</th>
+          <th scope="col"># flota o placa</th>
+          <th scope="col">Numero de guia</th>
+          <th scope="col">Fecha de registro</th>
+          <th scope="col">Fecha de entrega</th>
+          <th scope="col">Precio de envio</th>
+          <th scope="col">Valor de descuento</th>
+          <th scope="col">Precio final de envio</th>
+          <th scope="col">Tipo de logistica</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="log : ${logisticas}">
+          <td th:text="${log.id}"></td>
+          <td th:text="${log.cliente.cedula}+' - '+${log.cliente.nombres}+' '+ ${log.cliente.apellidos}"></td>
+          <td th:text="${log.producto.nombre}"></td>
+          <td th:text="${log.bodega.nombre}"></td>
+          <td th:text="${log.cantidadPructo}"></td>
+          <td th:text="${log.numeroFlota}"></td>
+          <td th:text="${log.numeroGuia}"></td>
+          <td th:text="${log.fechaRegistro}"></td>
+          <td th:text="${log.fechaEntrega}"></td>
+          <td th:text="${log.precioEnvio}"></td>
+          <td th:text="${log.valorDescuento}"></td>
+          <td th:text="${log.precioFinalEnvio}"></td>
+          <td th:text="${log.tipoLogistica}"></td>
+          <td>
+            <a class="btn btn-primary" th:href="@{/editarLogistica/{id}(id=${log.id})}">Editar</a>
+            <a class="btn btn-danger" th:href="@{/deleteLogistica/{id}(id=${log.id})}">Eliminar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

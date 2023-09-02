@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Productos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h2>LISTA DE PRODUCTOS</h2>
+    <br>
+    <a class="btn btn-primary" th:href="crearProducto">Crear Producto</a>
+    <a class="btn btn-warning" href="../index.html">Inicio</a>
+    <br>
+    <br>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Existencia</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="prod : ${productos}">
+          <td th:text="${prod.id}"></td>
+          <td th:text="${prod.nombre}"></td>
+          <td th:text="${prod.precio}"></td>
+          <td th:text="${prod.existencias}"></td>
+          <td>
+            <a class="btn btn-primary" th:href="@{/editarProducto/{id}(id=${prod.id})}">Editar</a>
+            <a class="btn btn-danger" th:href="@{/deleteProducto/{id}(id=${prod.id})}">Eliminar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

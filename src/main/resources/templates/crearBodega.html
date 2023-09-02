@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1">
+    <title>Bodega</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <form action="#" th:action="@{/addBodega}" th:object="${bodega}" method="post">
+      <input type="hidden" th:field="*{id}" class="form-control">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Nombre</label>
+        <input type="text" th:field="*{nombre}" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Telefono</label>
+        <input type="text" class="form-control" th:field="*{telefono}" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Ubicacion</label>
+        <input type="text" class="form-control" th:field="*{ubicacion}" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Tipo de bodega</label>
+        <select th:field="*{tipoBodega}" class="form-control" required>
+          <option th:value="'Maritima'" th:text="Maritima"></option>
+          <option th:value="'Terrestre'" th:text="Terrestre"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Territorio</label>
+        <select th:field="*{territorio}" class="form-control" required>
+          <option th:value="'Nacional'" th:text="Nacional"></option>
+          <option th:value="'Internacional'" th:text="Internacional"></option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">OK</button>
+      <a class="btn btn-warning" href="../mostrarBodegas" role="button">Volver</a>
+    </form>
+  </body>
+</html>

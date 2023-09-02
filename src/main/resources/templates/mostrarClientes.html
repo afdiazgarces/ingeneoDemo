@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Clientes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h2>LISTA DE CLIENTES</h2>
+    <br>
+    <a class="btn btn-primary" th:href="crearCliente">Crear Cliente</a>
+    <a class="btn btn-warning" href="../index.html">Inicio</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Cedula</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Genero</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Dirección</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="cliente : ${clientes}">
+          <td th:text="${cliente.id}"></td>
+          <td th:text="${cliente.cedula}"></td>
+          <td th:text="${cliente.nombres}"></td>
+          <td th:text="${cliente.apellidos}"></td>
+          <td th:text="${cliente.genero}"></td>
+          <td th:text="${cliente.telefono}"></td>
+          <td th:text="${cliente.direccion}"></td>
+          <td>
+            <a class="btn btn-primary" th:href="@{/editarCliente/{id}(id=${cliente.id})}">Editar</a>
+            <a class="btn btn-danger" th:href="@{/delete/{id}(id=${cliente.id})}">Eliminar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
