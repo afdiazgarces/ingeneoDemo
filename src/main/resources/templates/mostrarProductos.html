@@ -1,42 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Productos</title>
+    <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <h2>LISTA DE PRODUCTOS</h2>
-    <br>
-    <a class="btn btn-primary" th:href="crearProducto">Crear Producto</a>
-    <a class="btn btn-warning" href="../index.html">Inicio</a>
-    <br>
-    <br>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Existencia</th>
-          <th scope="col">Acción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:each="prod : ${productos}">
-          <td th:text="${prod.id}"></td>
-          <td th:text="${prod.nombre}"></td>
-          <td th:text="${prod.precio}"></td>
-          <td th:text="${prod.existencias}"></td>
-          <td>
-            <a class="btn btn-primary" th:href="@{/editarProducto/{id}(id=${prod.id})}">Editar</a>
-            <a class="btn btn-danger" th:href="@{/deleteProducto/{id}(id=${prod.id})}">Eliminar</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" th:href="@{/}">INGENEO</a>
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" th:href="mostrarClientes">CLIENTES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/mostrarProductos}">PRODUCTOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/mostrarBodegas}">BODEGAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/mostrarLogisticas}">LOGISTICA</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container mt-4">
+      <a class="btn btn-primary" th:href="crearProducto">Nuevo</a>
+      <br>
+      <br>
+      <h3>LISTA DE PRODUCTOS</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Existencia</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="prod : ${productos}">
+            <td th:text="${prod.id}"></td>
+            <td th:text="${prod.nombre}"></td>
+            <td th:text="${prod.precio}"></td>
+            <td th:text="${prod.existencias}"></td>
+            <td>
+              <a class="btn btn-primary" th:href="@{/editarProducto/{id}(id=${prod.id})}">Editar</a>
+              <a class="btn btn-danger" th:href="@{/deleteProducto/{id}(id=${prod.id})}">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>/
   </body>
 </html>

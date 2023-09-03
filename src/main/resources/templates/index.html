@@ -1,9 +1,7 @@
+
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org/">
   <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -11,6 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title></title>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -32,38 +32,5 @@
         </li>
       </ul>
     </nav>
-    <div class="container mt-4">
-      <a class="btn btn-primary" th:href="crearBodega">Nuevo</a>
-      <br>
-      <br>
-      <h3>LISTA DE BODEGAS</h3>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Ubicación</th>
-            <th scope="col">Tipo de bodega</th>
-            <th scope="col">Territorio</th>
-            <th scope="col">Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="bod : ${bodegas}">
-            <td th:text="${bod.id}"></td>
-            <td th:text="${bod.nombre}"></td>
-            <td th:text="${bod.telefono}"></td>
-            <td th:text="${bod.ubicacion}"></td>
-            <td th:text="${bod.tipoBodega}"></td>
-            <td th:text="${bod.territorio}"></td>
-            <td>
-              <a class="btn btn-primary" th:href="@{/editarBodega/{id}(id=${bod.id})}">Editar</a>
-              <a class="btn btn-danger" th:href="@{/deleteBodega/{id}(id=${bod.id})}">Eliminar</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </body>
 </html>

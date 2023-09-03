@@ -43,7 +43,7 @@ public class ProductoController {
 	@GetMapping("/mostrarProductos")
 	public Object mostrarProductos(Model model) {
 
-		var productos = (List<Producto>) productoService.findAll();
+		Object productos = (List<Producto>) productoService.findAll();
 
 		logger.info(Util.writeValueAsString(productos));
 

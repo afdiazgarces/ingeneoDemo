@@ -1,13 +1,12 @@
 package com.project.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-//import jakarta.validation.constraints.NotEmpty;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "productos")
@@ -20,7 +19,7 @@ public class Producto {
 	private String nombre;
 	@NotNull(message = "El campo es obligatorio")
 	private double precio;
-	@NotEmpty(message = "El campo es obligatorio")
+	@NotNull(message = "El campo es obligatorio")
 	private int existencias;
 
 	public long getId() {

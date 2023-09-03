@@ -68,7 +68,7 @@ public class LogisticaController {
 	@GetMapping("/mostrarLogisticas")
 	public Object mostrarLogisticas(Model model) {
 
-		var logisticas = (List<Logistica>) logisticaService.findAll();
+		Object logisticas = (List<Logistica>) logisticaService.findAll();
 
 		logger.info(Util.writeValueAsString(logisticas));
 
@@ -101,7 +101,7 @@ public class LogisticaController {
 	@PostMapping("/searchLogistica")
 	public String searchLogistica(@ModelAttribute("dto") SearchDto dto, BindingResult result, Model model) {
 
-		var logisticas = (List<Logistica>) logisticaService.findAll();
+		Object logisticas = (List<Logistica>) logisticaService.findAll();
 
 		if (dto.getOption().equals("Cedula")) {
 			logisticas = (List<Logistica>) logisticaService.findByFieldCedula(dto.getValue());

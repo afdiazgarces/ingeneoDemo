@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.demo.model.Cliente;
+import com.project.demo.model.RequestLoginTokenDto;
 import com.project.demo.service.IClienteService;
 
 @RestController
@@ -39,6 +40,16 @@ public class ClienteControllerApi {
 		Cliente cliente = clienteService.findById(id);
 		clienteService.delete(cliente);
 		return new ResponseEntity<>("Ejecuccón Eliminacion Exitosa", HttpStatus.OK); 
+	}
+	
+	@PostMapping("/api/prueba")
+	public Object prueba(@RequestBody RequestLoginTokenDto rq) {
+
+
+		
+
+		return rq;
+
 	}
 
 }

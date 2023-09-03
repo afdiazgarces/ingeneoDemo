@@ -43,7 +43,7 @@ public class ClienteController {
 	@GetMapping("/mostrarClientes")
 	public Object mostrarClientes(Model model) {
 
-		var clientes = (List<Cliente>) clienteService.findAll();
+		Object clientes = (List<Cliente>) clienteService.findAll();
 
 		logger.info(Util.writeValueAsString(clientes));
 

@@ -43,7 +43,7 @@ public class BodegaController {
 	@GetMapping("/mostrarBodegas")
 	public Object mostrarBodegas(Model model) {
 
-		var bodegas = (List<Bodega>) bodegaService.findAll();
+		Object bodegas = (List<Bodega>) bodegaService.findAll();
 
 		logger.info(Util.writeValueAsString(bodegas));
 
