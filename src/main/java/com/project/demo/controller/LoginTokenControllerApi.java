@@ -21,14 +21,22 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class LoginTokenControllerApi {
 
 	Logger logger = Logger.getLogger(LoginTokenControllerApi.class.getName());
+	
+	public final static String ADMIN = "admin";
 
 	@PostMapping("api/login")
 	public ResponseLoginTokenDto login(@RequestBody RequestLoginTokenDto rq) {
 
 		logger.info("Entre a generar token");
-
-		String token = getJWTToken(rq.getUser());
 		ResponseLoginTokenDto response = new ResponseLoginTokenDto();
+		if(!rq.getUser().equals(ADMIN) || !rq.getPassword().equals(ADMIN)) {
+			response.setUser(rq.getUser());
+			response.setToken(null);
+			response.setMessage("Datos invalidos para generar token");
+			return response;
+		}
+		String token = getJWTToken(rq.getUser());
+		
 		response.setUser(rq.getUser());
 		response.setToken(token);
 		response.setMessage("Token Generado");
